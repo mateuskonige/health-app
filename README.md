@@ -60,4 +60,3 @@ Isso encerrará e removerá os contêineres em execução.
 ---
 
 Feito com ❤️ por [Mateus Reis](https://github.com/mateuskonige).
-```
