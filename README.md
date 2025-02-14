@@ -1,4 +1,4 @@
-# Health App - Testando o Repositório com Docker
+# Health App
 
 Este guia fornece instruções sobre como configurar e testar o repositório **Health App** usando Docker.
 
