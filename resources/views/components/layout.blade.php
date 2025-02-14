@@ -15,7 +15,7 @@
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
-                <a class="nav-link px-2 text-white" href="/">
+                <a class="nav-link px-2 text-white" href="{{ route('relatorios.index') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-activity" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"

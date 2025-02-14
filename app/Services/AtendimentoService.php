@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Atendimento;
+use App\Models\Medico;
 use DateTime;
 
 class AtendimentoService
@@ -13,6 +14,26 @@ class AtendimentoService
             ->with('medico', 'paciente')
             ->orderBy('created_at', 'desc')
             ->paginate($perPage);
+    }
+
+    public function getRelatorio($request, $perPage)
+    {
+        $validated = $request->validated();
+
+        $query = Atendimento::with('medico', 'paciente');
+
+        if (isset($validated['medico_id'])) {
+            $query->where('medico_id', $validated['medico_id']);
+        }
+
+        $atendimentos = $query->paginate($perPage);
+
+        $medicos = Medico::pluck('nome', 'id');
+
+        return [
+            'atendimentos' => $atendimentos,
+            'medicos' => $medicos,
+        ];
     }
 
     public function create(array $data)
