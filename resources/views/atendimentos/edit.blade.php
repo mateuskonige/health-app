@@ -10,7 +10,7 @@
 
     {{-- title  --}}
     <div class="d-flex justify-content-between pb-4">
-        <h2>Editar atendimento {{ $atendimento->nome }}</h2>
+        <h2>Editar atendimento {{ $atendimento->id }}</h2>
 
     </div>
 
