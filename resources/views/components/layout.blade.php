@@ -27,7 +27,7 @@
                     <li><a href="#" class="nav-link px-2 text-secondary"></a></li>
                     <li><a href="#" class="nav-link px-2 text-white">Atendimentos</a></li>
                     <li><a href="{{ route('medicos.index') }}" class="nav-link px-2 text-white">Médicos</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Pácientes</a></li>
+                    <li><a href="{{ route('pacientes.index') }}" class="nav-link px-2 text-white">Pacientes</a></li>
                 </ul>
             </div>
         </div>
