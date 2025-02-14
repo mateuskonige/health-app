@@ -43,7 +43,7 @@ Para construir e iniciar os contêineres, execute:
 
 ### 4. Gerar a Chave do Aplicativo (APP_KEY)
 
-O Laravel requer uma chave de aplicativo (`APP_KEY`) para criptografia e segurança. Para gerar a chave, execute o seguinte comando **dentro do contêiner** após iniciar o Docker (veja o próximo passo):
+O Laravel requer uma chave de aplicativo (`APP_KEY`) para criptografia e segurança. Para gerar a chave, execute o seguinte comando **dentro do contêiner** após iniciar o Docker:
 
 ```bash
 ./vendor/bin/sail artisan key:generate
