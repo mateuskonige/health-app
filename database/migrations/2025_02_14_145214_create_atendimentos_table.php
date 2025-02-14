@@ -15,8 +15,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
 
             $table->dateTime('data_atendimento');
-            $table->foreignUuid('medico_id')->constrained();
-            $table->foreignUuid('paciente_id')->constrained();
+            $table->foreignUuid('medico_id')->constrained()->cascadeOnDelete();
+            $table->foreignUuid('paciente_id')->constrained()->cascadeOnDelete();
 
             $table->timestamps();
         });

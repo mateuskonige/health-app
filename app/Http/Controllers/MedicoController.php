@@ -46,7 +46,8 @@ class MedicoController extends Controller
     public function show(Medico $medico)
     {
         return view('medicos.show', [
-            'medico' => $medico
+            'medico' => $medico,
+            'pacientes' => $medico->pacientes()->orderByPivot('created_at', 'desc')->paginate()
         ]);
     }
 
