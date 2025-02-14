@@ -65,7 +65,7 @@ Para parar os contêineres, use o seguinte comando:
 ./vendor/bin/sail down
 ```
 
-Isso encerrará e removerá os contêineres em execução.
+Isso encerrará os contêineres em execução.
 
 ---
 
