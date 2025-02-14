@@ -17,6 +17,11 @@ class Medico extends Model
         'especialidade',
     ];
 
+    public function pacientes()
+    {
+        return $this->belongsToMany(Paciente::class, 'atendimentos', 'medico_id', 'paciente_id');
+    }
+
     public function scopeFilter($query, $request)
     {
         if (!$request) return;

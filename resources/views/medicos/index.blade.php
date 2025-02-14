@@ -36,42 +36,45 @@
     </form>
 
     {{-- tabela --}}
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">CRM</th>
-                <th scope="col">Especialidade</th>
-                <th scope="col" class="text-end">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($medicos as $medico)
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>{{ $loop->index + 1 }}</td>
-                    <td>{{ $medico->nome }}</td>
-                    <td>{{ $medico->crm }}</td>
-                    <td>{{ $medico->especialidade }}</td>
-                    <td class="text-end">
-
-
-                        <div class="btn-group dropstart">
-                            <button type="button" class="btn btn-secondary dropdown-toggle btn-sm"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ route('medicos.show', $medico->id) }}"
-                                        class="dropdown-item">Visualizar</a>
-                                </li>
-                                <li><a href="{{ route('medicos.edit', $medico->id) }}" class="dropdown-item">Editar</a>
-                            </ul>
-                        </div>
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CRM</th>
+                    <th scope="col">Especialidade</th>
+                    <th scope="col" class="text-end">Ações</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach ($medicos as $medico)
+                    <tr>
+                        <td>{{ $loop->index + 1 }}</td>
+                        <td>{{ $medico->nome }}</td>
+                        <td>{{ $medico->crm }}</td>
+                        <td>{{ $medico->especialidade }}</td>
+                        <td class="text-end">
+
+
+                            <div class="btn-group dropstart">
+                                <button type="button" class="btn btn-secondary dropdown-toggle btn-sm"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ route('medicos.show', $medico->id) }}"
+                                            class="dropdown-item">Visualizar</a>
+                                    </li>
+                                    <li><a href="{{ route('medicos.edit', $medico->id) }}"
+                                            class="dropdown-item">Editar</a>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
     {{-- paginate --}}
     @if ($medicos->hasPages())

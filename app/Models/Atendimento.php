@@ -6,25 +6,29 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Paciente extends Model
+class Atendimento extends Model
 {
-    /** @use HasFactory<\Database\Factories\PacienteFactory> */
+    /** @use HasFactory<\Database\Factories\AtendimentoFactory> */
     use HasFactory, HasUuids;
 
     protected $fillable = [
-        'nome',
-        'cpf',
-        'data_nascimento',
-        'email',
+        'data_atendimento',
+        'medico_id',
+        'paciente_id'
     ];
 
     protected $casts = [
-        'data_nascimento' => 'date',
+        'data_atendimento' => 'datetime'
     ];
 
-    public function medicos()
+    public function medico()
     {
-        return $this->belongsToMany(Medico::class, 'atendimentos', 'paciente_id', 'medico_id');
+        return $this->belongsTo(Medico::class);
+    }
+
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class);
     }
 
     public function scopeFilter($query, $request)
@@ -33,7 +37,7 @@ class Paciente extends Model
 
         return $query
             ->when(data_get($request, 'nome'), function ($query, $nome) {
-                return $query->where('nome', 'like', '%' . $nome . '%');
+                return $query->whereRelation('medico', 'nome', 'like', '%' . $nome . '%');
             });
     }
 }
