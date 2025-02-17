@@ -49,7 +49,26 @@ O Laravel requer uma chave de aplicativo (`APP_KEY`) para criptografia e seguran
 ./vendor/bin/sail artisan key:generate
 ```
 
-### 5. Acessar o Aplicativo
+### 5. Executar Migrações (Migrations)
+
+Certifique-se de que o banco de dados está em execução.
+Execute as migrações com o seguinte comando:
+
+```bash
+./vendor/bin/sail artisan migrate
+```
+
+Isso criará as tabelas necessárias no banco de dados.
+
+### 6. Executar Seeders (Opcional)
+
+Caso queira popular o banco de dados com dados fictícios, execute:
+
+```bash
+./vendor/bin/sail artisan migrate db:seed
+```
+
+### 7. Acessar o Aplicativo
 
 Após os contêineres estarem em execução, o aplicativo estará disponível no navegador através do endereço:
 
@@ -57,7 +76,7 @@ Após os contêineres estarem em execução, o aplicativo estará disponível no
 http://localhost
 ```
 
-### 6. Parar os Contêineres
+### 8. Parar os Contêineres
 
 Para parar os contêineres, use o seguinte comando:
 
@@ -70,5 +89,3 @@ Isso encerrará os contêineres em execução.
 ---
 
 Feito com ❤️ por [Mateus Reis](https://github.com/mateuskonige).
-
-
