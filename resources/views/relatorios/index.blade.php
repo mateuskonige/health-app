@@ -51,7 +51,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Data do atendimento</th>
                         <th scope="col">Médico</th>
-                        <th scope="col">Atendimento</th>
+                        <th scope="col">Paciente</th>
                     </tr>
                 </thead>
                 <tbody>

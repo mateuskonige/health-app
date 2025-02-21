@@ -15,10 +15,11 @@ return new class extends Migration
             $table->uuid('id')->primary();
 
             $table->dateTime('data_atendimento');
-            $table->foreignUuid('medico_id')->constrained()->cascadeOnDelete();
-            $table->foreignUuid('paciente_id')->constrained()->cascadeOnDelete();
+            $table->foreignUuid('medico_id')->constrained()->setNullOnDelete();
+            $table->foreignUuid('paciente_id')->constrained()->setNullOnDelete();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
