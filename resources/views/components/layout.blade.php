@@ -34,7 +34,7 @@
         </div>
     </header>
 
-    <main role="main" class="container">
+    <main role="main" class="container mb-3">
         {{ $slot }}
     </main>
 </body>

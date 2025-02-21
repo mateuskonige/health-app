@@ -36,52 +36,52 @@
     </form>
 
     {{-- tabela --}}
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">CPF</th>
-                    <th scope="col">Nascimento</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col" class="text-end">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($pacientes as $paciente)
+    <div class="card ">
+        <div class="table-responsive py-1">
+            <table class="table table-striped mb-0">
+                <thead>
                     <tr>
-                        <td>{{ $loop->index + 1 }}</td>
-                        <td>{{ $paciente->nome }}</td>
-                        <td>{{ $paciente->cpf }}</td>
-                        <td>{{ $paciente->data_nascimento->isoFormat('D [de] MMMM [de] YYYY') }}</td>
-                        <td>{{ $paciente->email }}</td>
-                        <td class="text-end">
-
-
-                            <div class="btn-group dropstart">
-                                <button type="button" class="btn btn-secondary dropdown-toggle btn-sm"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ route('pacientes.show', $paciente->id) }}"
-                                            class="dropdown-item">Visualizar</a>
-                                    </li>
-                                    <li><a href="{{ route('pacientes.edit', $paciente->id) }}"
-                                            class="dropdown-item">Editar</a>
-                                </ul>
-                            </div>
-                        </td>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Nascimento</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col" class="text-end">Ações</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-
-    {{-- paginate --}}
-    @if ($pacientes->hasPages())
-        <div class="m-auto mt-2">
-            {{ $pacientes->links() }}
+                </thead>
+                <tbody>
+                    @foreach ($pacientes as $paciente)
+                        <tr>
+                            <td>{{ $loop->index + 1 }}</td>
+                            <td>{{ $paciente->nome }}</td>
+                            <td>{{ $paciente->cpf }}</td>
+                            <td>{{ $paciente->data_nascimento->isoFormat('D [de] MMMM [de] YYYY') }}</td>
+                            <td>{{ $paciente->email }}</td>
+                            <td class="text-end">
+                                <div class="btn-group dropstart">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle btn-sm"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ route('pacientes.show', $paciente->id) }}"
+                                                class="dropdown-item">Visualizar</a>
+                                        </li>
+                                        <li><a href="{{ route('pacientes.edit', $paciente->id) }}"
+                                                class="dropdown-item">Editar</a>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-    @endif
+
+        {{-- paginate --}}
+        @if ($pacientes->hasPages())
+            <div class="card-footer pt-4">
+                {{ $pacientes->links() }}
+            </div>
+        @endif
+    </div>
 </x-layout>

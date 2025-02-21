@@ -44,38 +44,41 @@
 
     {{-- tabela --}}
     @if (request()->medico_id)
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Data do atendimento</th>
-                        <th scope="col">Médico</th>
-                        <th scope="col">Paciente</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($atendimentos as $atendimento)
+        <div class="card ">
+            <div class="table-responsive py-1">
+                <table class="table table-striped mb-0">
+                    <thead>
                         <tr>
-                            <td>{{ $atendimento->id }}</td>
-                            <td>{{ $atendimento->data_atendimento->isoFormat('D [de] MMMM [de] YYYY, HH\:mm') }}</td>
-                            <td>{{ $atendimento->medico->nome }}</td>
-                            <td>{{ $atendimento->paciente->nome }}</td>
-
+                            <th scope="col">#</th>
+                            <th scope="col">Data do atendimento</th>
+                            <th scope="col">Médico</th>
+                            <th scope="col">Paciente</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($atendimentos as $atendimento)
+                            <tr>
+                                <td>{{ $atendimento->id }}</td>
+                                <td>{{ $atendimento->data_atendimento->isoFormat('D [de] MMMM [de] YYYY, HH\:mm') }}
+                                </td>
+                                <td>{{ $atendimento->medico->nome }}</td>
+                                <td>{{ $atendimento->paciente->nome }}</td>
+
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         {{-- paginate --}}
         @if ($atendimentos->hasPages())
-            <div class="m-auto mt-2">
+            <div class="card-footer pt-4">
                 {{ $atendimentos->links() }}
             </div>
         @endif
     @else
-        <div class="container text-center">
+        <div class="card p-4 text-center">
             <span class="text-muted">Nenhum médico selecionado</span>
         </div>
     @endif

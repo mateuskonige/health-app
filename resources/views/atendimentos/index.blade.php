@@ -36,48 +36,50 @@
     </form>
 
     {{-- tabela --}}
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Data do atendimento</th>
-                    <th scope="col">Médico</th>
-                    <th scope="col">Atendimento</th>
-                    <th scope="col" class="text-end">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($atendimentos as $atendimento)
+    <div class="card ">
+        <div class="table-responsive py-1">
+            <table class="table table-striped mb-0">
+                <thead>
                     <tr>
-                        <td>{{ $atendimento->id }}</td>
-                        <td>{{ $atendimento->data_atendimento->isoFormat('D [de] MMMM [de] YYYY, HH\:mm') }}</td>
-                        <td>{{ $atendimento->medico->nome }}</td>
-                        <td>{{ $atendimento->paciente->nome }}</td>
-                        <td class="text-end">
-                            <div class="btn-group dropstart">
-                                <button type="button" class="btn btn-secondary dropdown-toggle btn-sm"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ route('atendimentos.show', $atendimento->id) }}"
-                                            class="dropdown-item">Visualizar</a>
-                                    </li>
-                                    <li><a href="{{ route('atendimentos.edit', $atendimento->id) }}"
-                                            class="dropdown-item">Editar</a>
-                                </ul>
-                            </div>
-                        </td>
+                        <th scope="col">#</th>
+                        <th scope="col">Data do atendimento</th>
+                        <th scope="col">Médico</th>
+                        <th scope="col">Atendimento</th>
+                        <th scope="col" class="text-end">Ações</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-
-    {{-- paginate --}}
-    @if ($atendimentos->hasPages())
-        <div class="m-auto mt-2">
-            {{ $atendimentos->links() }}
+                </thead>
+                <tbody>
+                    @foreach ($atendimentos as $atendimento)
+                        <tr>
+                            <td>{{ $atendimento->id }}</td>
+                            <td>{{ $atendimento->data_atendimento->isoFormat('D [de] MMMM [de] YYYY, HH\:mm') }}</td>
+                            <td>{{ $atendimento->medico->nome }}</td>
+                            <td>{{ $atendimento->paciente->nome }}</td>
+                            <td class="text-end">
+                                <div class="btn-group dropstart">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle btn-sm"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ route('atendimentos.show', $atendimento->id) }}"
+                                                class="dropdown-item">Visualizar</a>
+                                        </li>
+                                        <li><a href="{{ route('atendimentos.edit', $atendimento->id) }}"
+                                                class="dropdown-item">Editar</a>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-    @endif
+
+        {{-- paginate --}}
+        @if ($atendimentos->hasPages())
+            <div class="card-footer pt-4">
+                {{ $atendimentos->links() }}
+            </div>
+        @endif
+    </div>
 </x-layout>
